@@ -1,12 +1,14 @@
 {
     'name': 'Remitos, COT y demas ajustes de stock para Argentina',
-    'version': "17.0.1.0.0",
+    'version': "17.0.1.3.0",
     'category': 'Localization/Argentina',
     'sequence': 14,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
     'depends': [
+        'l10n_ar',
+        'stock',
         'stock_voucher',  # por la clase receiptbooks y demas
         'l10n_ar_ux',
         'stock_picking_invoice_link',
@@ -32,6 +34,6 @@
         'demo/stock_picking_demo.xml',
     ],
     'installable': True,
-    'auto_install': False,
+    'auto_install': ['stock', 'l10n_ar'],
     'application': False,
 }

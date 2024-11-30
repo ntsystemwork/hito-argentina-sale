@@ -106,8 +106,14 @@
     <!-- remove default document title -->
     <h2 position="replace"/>
 
-    <div class="row mt32 mb32" position="replace">
-        <div id="informations" class="row mt8 mb8">
+    <!-- We want to hide order number and shipping address show at to left side of the report -->
+    <xpath expr="//div[@name='div_origin']/.." position="attributes">
+        <attribute name="id">hide_order_and_shipping_date</attribute>
+        <attribute name="t-if">0</attribute>
+    </xpath>
+
+    <div id="hide_order_and_shipping_date" position="after">
+        <div id="informations" class="row mt32 mb32">
             <div class="col-6">
                 <t t-set="partner" t-value="o.partner_id or (o.move_ids and o.move_ids[0].partner_id)"/>
                 <t t-set="commercial_partner" t-value="partner.commercial_partner_id"/>
@@ -125,7 +131,7 @@
                     <strong>Deliver to: </strong>
                     <span t-field="partner.name"/>
                 </span>
-                <span t-out="partner" t-options='{"widget": "contact", "fields": ["address", "phone", "mobile"], "no_marker": False, "no_tag_br": True}'/>
+                <span t-out="partner" t-options='{"widget": "contact", "fields": ["address", "phone", "mobile"], "no_marker": False}'/>
 
                 <!-- (16) Responsabilidad AFIP -->
                 <strong>VAT Cond: </strong>
